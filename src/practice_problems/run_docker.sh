@@ -1,0 +1,1 @@
+docker run -it --rm -v /home/murray/Projects/The-Pete-Equation/src/practice_problems:/home/murray/Projects/The-Pete-Equation/src/practice_problems -w /home/murray/Projects/The-Pete-Equation/src/practice_problems --entrypoint python3 quay.io/dolfinadjoint/pyadjoint:2019.1.0 poisson_optimal_control.py
