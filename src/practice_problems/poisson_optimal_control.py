@@ -15,7 +15,6 @@ This code plots out various visualisations in the same directory.
 
 """
 
-import logging
 from dolfin import *
 from dolfin_adjoint import *
 import moola
