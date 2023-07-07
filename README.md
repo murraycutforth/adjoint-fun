@@ -2,7 +2,10 @@
 
 ## Demo
 
-In this example, I wanted to "discover" an equation for my Dad's birthday, which was a specific parameterisation of an advection-diffusion equation which would yield a solution at t=0.5 of my Dad's face!
+In this example, I wanted to "discover" an equation for my Dad's birthday, which was a specific parameterisation of an advection-diffusion equation which would yield a solution at t=0.5 of my Dad's face! The advection equation we are using as a constraint here is given by
+
+$$\frac{\partial u}{\partial t} + \mathbf{a} \cdot \nabla u = \kappa \nabla^2 u + f$$
+where $u$ is the quantity of interest, $\mathbf{a}$ represents the constant velocity field, $\kappa$ denotes the diffusion coefficient, $f$ is the source term, and $t$ is the time variable. 
 
 In order to discover this particular parameterisation, I used the adjoint method implemented in `dolfin-adjoint`, to solve a PDE-constrained optimisation problem.
 I had to cheat a little bit and add a (heavily regularised) source term in order to get a satisfactory solution. 
@@ -10,7 +13,11 @@ I had to cheat a little bit and add a (heavily regularised) source term in order
 The target solution was set equal to this photo of my Dad:
 ![rect14](https://github.com/murraycutforth/adjoint-fun/assets/11088372/98b3a07d-b995-4717-964b-093977d317e6)
 
-And after 50 iterations of L-BFGS, we discovered an equation with the following solution:
+The, we optimised the following error functional:
+$$J = \frac{1}{2} \int_\Omega (u(t=T) - d)^2 dx + \frac{\alpha}{2} \int_\Omega \textbf{a}^T\textbf{a} \ dx + \frac{\beta}{2} \int_\Omega f^2 dx$$
+where $d$ corresponded to the photo above.
+
+After 50 iterations of L-BFGS, we discovered an equation with the following solution:
 ![timesteps_frame_99](https://github.com/murraycutforth/adjoint-fun/assets/11088372/f682faa1-7073-4ab4-b74e-d2078d1e7924)
 
 The source term and velocity fields which were discovered look like this:
