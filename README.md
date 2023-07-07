@@ -1,5 +1,25 @@
 # adjoint-fun
 
+## Demo
+
+In this example, I wanted to "discover" an equation for my Dad's birthday, which was a specific parameterisation of an advection-diffusion equation which would yield a solution at t=0.5 of my Dad's face!
+
+In order to discover this particular parameterisation, I used the adjoint method implemented in `dolfin-adjoint`, to solve a PDE-constrained optimisation problem.
+I had to cheat a little bit and add a (heavily regularised) source term in order to get a satisfactory solution. 
+
+The target solution was set equal to this photo of my Dad:
+![rect14](https://github.com/murraycutforth/adjoint-fun/assets/11088372/98b3a07d-b995-4717-964b-093977d317e6)
+
+And after 50 iterations of L-BFGS, we discovered an equation with the following solution:
+![timesteps_frame_99](https://github.com/murraycutforth/adjoint-fun/assets/11088372/f682faa1-7073-4ab4-b74e-d2078d1e7924)
+
+The source term and velocity fields which were discovered look like this:
+![final_param_fields](https://github.com/murraycutforth/adjoint-fun/assets/11088372/c30cb432-787a-46a4-880a-ad0a4e6ead20)
+
+And finally, here's a visualisation of the time evolution of the solution:
+![output_tiny](https://github.com/murraycutforth/adjoint-fun/assets/11088372/208c2ab0-0460-4b38-a717-68ddd8fbff75)
+
+
 ## Getting Started
 
 The environment for running this project is based on the dolfin-adjoint docker images. 
